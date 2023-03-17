@@ -46,7 +46,6 @@ def main():
     return render_template('main.html')
 
 
-#디텍션 처리
 @app.route('/upload_process', methods=['POST'])
 def upload_process():
     value = request.form['text']

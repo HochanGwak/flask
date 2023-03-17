@@ -28,19 +28,23 @@ def parse_args():
 
 
 app = Flask(__name__)
-
 db = pymysql.connect(host=config.DATABASE_CONFIG['host'], port=3306, user=config.DATABASE_CONFIG['user'], passwd=config.DATABASE_CONFIG['passwd'], db=config.DATABASE_CONFIG['db'], charset="utf8")
 cur = db.cursor()
-sql = "SELECT cnumber from zcompany"
+# 기본 언어셋 변경
+db.query("set character_set_connection=utf8;")
+db.query("set character_set_server=utf8;")
+db.query("set character_set_client=utf8;")
+db.query("set character_set_results=utf8;")
+db.query("set character_set_database=utf8;")
+
+sql = "SELECT address from zcompany"
 cur.execute(sql)
-
 data_list = cur.fetchall()
-
 print(data_list[0][0])
 print(data_list[1])
 print(data_list[2])
 print(data_list[3])
-
+# db.close()
 @app.route('/')
 def main():
     return render_template('main.html')

@@ -1,3 +1,5 @@
+# 일단 설치했지만 쓰이는 부분이 무엇인진 정리하지 않음
+
 pip install mysqlclient
 pip install -U Flask-SQLAlchemy
 pip install Flask-Migrate

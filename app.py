@@ -2,6 +2,7 @@
 from flask import Flask, render_template, request
 import argparse
 import pymysql
+import config
 DEFAULT_PORT = 5001
 DEFAULT_HOST = '0.0.0.0'
 
@@ -28,9 +29,9 @@ def parse_args():
 
 app = Flask(__name__)
 
-db = pymysql.connect(host="hohowork.cafe24.com", port=3306, user="hohowork", passwd="as50139154@", db="hohowork", charset="utf8")
+db = pymysql.connect(host=config.DATABASE_CONFIG['host'], port=3306, user=config.DATABASE_CONFIG['user'], passwd=config.DATABASE_CONFIG['passwd'], db=config.DATABASE_CONFIG['db'], charset="utf8")
 cur = db.cursor()
-sql = "SELECT address from zcompany"
+sql = "SELECT cnumber from zcompany"
 cur.execute(sql)
 
 data_list = cur.fetchall()
@@ -38,6 +39,7 @@ data_list = cur.fetchall()
 print(data_list[0][0])
 print(data_list[1])
 print(data_list[2])
+print(data_list[3])
 
 @app.route('/')
 def main():

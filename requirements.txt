@@ -1,0 +1,6 @@
+pip install mysqlclient
+pip install -U Flask-SQLAlchemy
+pip install Flask-Migrate
+pip install pymysql
+
+
